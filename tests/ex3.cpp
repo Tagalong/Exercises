@@ -5,7 +5,6 @@
  */
 
 #include <gtest/gtest.h>
-#include <assert.h>
 #include "ex3/time.h"
 
 TEST(ex3, computeDifference) {
