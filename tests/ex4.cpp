@@ -12,6 +12,14 @@ std::default_random_engine engine;
 std::uniform_int_distribution<> moneyDistribution(100, 1000);
 #define MONEY() (moneyDistribution(engine))
 
+int playMultiple(int money, int count) {
+    for (int i = 0; i < count && money > 0; ++i) {
+        money = play(money, i);
+    }
+
+    return money;
+}
+
 TEST(ex4, play) {
     int money;
 
@@ -19,10 +27,14 @@ TEST(ex4, play) {
     for (int i = 0; i < 100; ++i) {
         // Should lose some money after many attempts.
         money = MONEY();
-        ASSERT_LT(play(money, 100), money);
+        ASSERT_LT(playMultiple(money, 100), money);
+
+        // Should lose everything after playing very long (house always wins)
+        money = MONEY();
+        ASSERT_EQ(playMultiple(money, 10000), 0);
 
         // Should not more than double in one wager.
         money = MONEY();
-        ASSERT_LE(play(money, 1), 2 * money);
+        ASSERT_LE(playMultiple(money, 1), 2 * money);
     }
 }
