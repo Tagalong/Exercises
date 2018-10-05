@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     });
 
     auto showUsage = []() {
-        std::cerr << "Usage: run 1|2|3" << std::endl;
+        std::cerr << "Usage: run 1|2|3|4" << std::endl;
     };
     if (argc == 2) {
         switch (std::atoi(argv[1])) {
