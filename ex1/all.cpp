@@ -24,12 +24,13 @@ int factorial(int number) {
      */
     assert(number >= 0);
 
-    int value = 1;
-    for (int i = 2; i <= number; ++i) {
-        value *= i;
+    int factorial = 1;
+    for(int i = 2; i <= number; i++){
+        factorial *= i;
     }
+    
 
-    return value;
+    return factorial;
 }
 
 double exponent(float power, int powerTerms) {
